@@ -33,13 +33,15 @@ public class TimeTextPair: ObservableObject, Identifiable, Hashable {
 @available(macOS 10.15, *)
 public class SyncableLyrics: ObservableObject {
     
-    @Published private(set) var lines: [TimeTextPair] = []
-    @Published private(set) var index: Int = -1
+    @Published public private(set) var lines: [TimeTextPair] = []
+    @Published public private(set) var index: Int = -1
     
     public var timer: Timer?       // Sync use
     public var isEmpty: Bool { indices.isEmpty }
     public var count: Int { lines.count }
     public var indices: Range<Int> { 0..<lines.count }
+    
+    public init() {}
     
     public func clear() {
         self.lines = []
