@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-@available(macOS 12.0, *)
+@available(macOS 13.0, *)
 public struct LyricsView: View {
     
-    @ObservedObject var lyrics: SyncableLyrics
+    let lyrics: SyncableLyrics
     let tapAction: (_ time: Double?) -> Void
     
-    public init(lyrics: ObservedObject<SyncableLyrics>, tapAction: @escaping (_ time: Double?) -> Void) {
-        self._lyrics = lyrics
+    public init(lyrics: SyncableLyrics, tapAction: @escaping (_ time: Double?) -> Void) {
+        self.lyrics = lyrics
         self.tapAction = tapAction
     }
     
@@ -30,20 +30,11 @@ public struct LyricsView: View {
     }
 }
 
-@available(macOS 12.0, *)
+@available(macOS 13.0, *)
 struct LyricsView_Previews: PreviewProvider {
     
-    static let lyrics = SyncableLyrics()
-    
-    init() {
-        LyricsView_Previews.lyrics
-            .append(TimeTextPair(time: 10, text: "We should be daydreamers"))
-        LyricsView_Previews.lyrics
-            .append(TimeTextPair(time: 20, text: "We all should be daydreamers"))
-    }
-    
     static var previews: some View {
-        LyricsView(lyrics: ObservedObject(wrappedValue: lyrics)) { time in
+        LyricsView(lyrics: SyncableLyrics()) { time in
             print(time ?? 0)
         }
     }

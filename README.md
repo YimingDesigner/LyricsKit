@@ -1,44 +1,20 @@
 # LyricsKit
 
-A data model as well as a operational manager which use an array of `TimeTextPair` to store lines of lyrics. Through it you can edit, import and export lyrics, or sync lyrics real-time whose result is represented by `index`.
+## SyncableLyrics
 
-___
+`SyncableLyrics` is all you need to store, manage, and sync your lyrics with time tag attached.
 
-## Properties
+Inside the class, an array of `TimeTextPair` is borrowed to store lines of lyrics. Through it you can edit, import and export lyrics, or sync lyrics in real-time with `index`.
 
-```swift
-class TimeTextPair: ObservableObject, Identifiable, Hashable {
-    
-    let id = UUID()
-    @Published var time: Double?
-    @Published var text: String?
-    
-    init(time: Double?, text: String?)
-    
-    var timeInFormat: String?
-}
-
-class SyncableLyrics: ObservableObject {
-    
-    @Published private(set) var lines: [TimeTextPair]
-    @Published private(set) var index: Int
-    
-    var timer: Timer?
-    var isEmpty: Bool { indices.isEmpty }
-    var count: Int { lines.count }
-    var indices: Range<Int> { 0..<lines.count }    
-}
-
-```
-
-## Initializing and editing data
-
-There's no explicit `init()`.
+There are some frequently used properties of `SyncableLyrics`.
 
 ```swift
-self.lines = []
-self.index = -1
+isEmpty: Bool
+count: Int
+indices: Range<Int>
 ```
+
+###  Editing data
 
 ```swift
 // Clear everything
@@ -49,7 +25,7 @@ func setTime(at index: Int, time: Double)
 func append(_ line: TimeTextPair)
 ```
 
-## Importing and exporting
+### Importing and exporting
 
 ```swift
 // Import text from String, leaving time nil
@@ -61,13 +37,11 @@ func importFromLRC(lrcString: String)
 func exportToString() -> String
 ```
 
-> [!INFO]- Term Explainations
->
 > **Pure Text Without Time**: Text is line to line, seperated by `\n`.
 >
 > **.lrc Format**: `[mm:ss:tt]Text`
 
-## Syncing lyrics with player
+### Syncing lyrics with player
 
 Syncing will set `index` to indicate which line is now playing. But if the `time` of the next line is `nil`, syncing will stop working.
 
@@ -79,3 +53,15 @@ func startAutoSync(player: AVAudioPlayer)
 // Stop auto syncing, often used after paused or deprecated (often pause it before deprecate).
 func stopAutoSync()
 ```
+
+## LyricsView
+
+The elegant `LyricsView` is employed to display lyrics in real-time manner.
+
+```swift
+LyricsView(lyrics: SyncableLyrics) { time in
+    // player.currentTime = time
+    // action when lyrics button is pressed
+}
+```
+
