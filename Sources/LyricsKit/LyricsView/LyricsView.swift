@@ -10,7 +10,7 @@ import SwiftUI
 @available(macOS 13.0, *)
 public struct LyricsView: View {
     
-    let lyrics: SyncableLyrics
+    @ObservedObject var lyrics: SyncableLyrics
     let tapAction: (_ time: Double?) -> Void
     
     public init(lyrics: SyncableLyrics, tapAction: @escaping (_ time: Double?) -> Void) {
