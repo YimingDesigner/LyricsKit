@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
+import ModernUI
 
-@available(macOS 12.0, *)
+@available(macOS 13.0, *)
 struct LyricsRow: View {
     
     let line: TimeTextPair
@@ -21,36 +22,27 @@ struct LyricsRow: View {
             Text(line.text ?? "")
                 .font(.title)
                 .bold()
-                .padding()
-                .foregroundColor(isHighlighted ? .primary : .secondary)
+                .padding(10)
+                .foregroundColor(isHighlighted ? .primary : .tertiary)
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
         }
-        .buttonStyle(LyricsButtonStyle())
+        .buttonStyle(ShadeButtonStyle(.wrapped, size: .huge))
     }
 }
 
-@available(macOS 12.0, *)
-struct LyricsButtonStyle: ButtonStyle {
-    
-    @State private var isOnHover: Bool = false
-    
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-            .contentShape(Rectangle())
-            .background(isOnHover ? AnyShapeStyle(.ultraThickMaterial) : AnyShapeStyle(Color.black.opacity(0)))
-            .cornerRadius(6)
-            .onHover { onHover in
-                self.isOnHover = onHover
-            }
-    }
-    
-}
+// MARK: - Preview
 
-@available(macOS 12.0, *)
+@available(macOS 13.0, *)
 struct LyricsRow_Previews: PreviewProvider {
     static var previews: some View {
-        LyricsRow(line: TimeTextPair(time: 1124, text: "Come together"), isHighlighted: true) { time in
-            print(time ?? 0)
+        VStack {
+            LyricsRow(line: TimeTextPair(time: 10, text: "Come together"), isHighlighted: false) { time in
+                print(time ?? 0)
+            }
+            LyricsRow(line: TimeTextPair(time: 15, text: "Come together"), isHighlighted: true) { time in
+                print(time ?? 0)
+            }
         }
+        .frame(height: 300)
     }
 }

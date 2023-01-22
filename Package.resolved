@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "modernui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/YimingDesigner/ModernUI",
+      "state" : {
+        "branch" : "master",
+        "revision" : "f1bed5a947c9c26b93e9d2bb8eda94bd47b5484a"
+      }
+    }
+  ],
+  "version" : 2
+}
