@@ -59,7 +59,9 @@ func stopAutoSync()
 The elegant `LyricsView` is employed to display lyrics in real-time manner.
 
 ```swift
-LyricsView(lyrics: SyncableLyrics) { time in
+LyricsView(lyrics: SyncableLyrics
+           font: Font = .system(size: 22),
+           scrollIndicatorVisibility: ScrollIndicatorVisibility = .automatic) { time in
     // player.currentTime = time
     // action when lyrics button is pressed
 }

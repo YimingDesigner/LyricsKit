@@ -18,7 +18,7 @@ public struct LyricsView: View {
     let scrollIndicatorVisibility: ScrollIndicatorVisibility
     
     public init(lyrics: SyncableLyrics,
-                font : Font = .system(size: 22),
+                font: Font = .system(size: 22),
                 scrollIndicatorVisibility: ScrollIndicatorVisibility = .automatic,
                 tapAction: @escaping (_ time: Double?) -> Void) {
         self.lyrics = lyrics
