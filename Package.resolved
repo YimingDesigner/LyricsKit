@@ -1,12 +1,21 @@
 {
   "pins" : [
     {
+      "identity" : "id3tageditor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/chicio/ID3TagEditor",
+      "state" : {
+        "revision" : "87242fcb531e31eb7a94ec363c9631fe4e510ebb",
+        "version" : "4.5.0"
+      }
+    },
+    {
       "identity" : "modernui",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/YimingDesigner/ModernUI",
       "state" : {
-        "branch" : "master",
-        "revision" : "f1bed5a947c9c26b93e9d2bb8eda94bd47b5484a"
+        "revision" : "1fa29466510e2161337b09f24e8a24d9cc50198e",
+        "version" : "1.1.0"
       }
     }
   ],
