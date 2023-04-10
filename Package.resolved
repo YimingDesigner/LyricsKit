@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/YimingDesigner/ModernUI",
       "state" : {
-        "revision" : "1fa29466510e2161337b09f24e8a24d9cc50198e",
-        "version" : "1.1.0"
+        "revision" : "e4a83c4aedfc4769034d958391dec4690a5780b0",
+        "version" : "1.2.0"
       }
     }
   ],
