@@ -63,7 +63,13 @@ public class SyncableLyrics: ObservableObject {
                 let minutes = Double(line.substring(from: "[", to: ":") ?? "0") ?? 0
                 let seconds = Double(line.substring(from: ":", to: ".") ?? "0") ?? 0
                 let hundredthSeconds = Double(line.substring(from: ".", to: "]") ?? "0") ?? 0
-                let text = String(line.substring(from: "]") ?? "")
+                
+                var text: String?
+                if let substring = line.substring(from: "]") {
+                    if substring != "" {
+                        text = String(substring)
+                    }
+                }
                 
                 self.append(TimeTextPair(time: minutes*60 + seconds + hundredthSeconds/100, text: text))
             }
