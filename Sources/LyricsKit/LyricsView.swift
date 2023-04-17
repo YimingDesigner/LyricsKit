@@ -39,7 +39,7 @@ public struct LyricsView: View {
                                 .foregroundColor((index == lyrics.index) ? .primary : .tertiary)
                                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                         }
-                        .buttonStyle(LyricsButtonStyle())
+                        .buttonStyle(WrapUmbrageButtonStyle())
                         .id(index)
                     }
                 }
